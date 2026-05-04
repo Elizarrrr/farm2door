@@ -106,6 +106,21 @@ def add_product(request):
     return render(request, 'farmer/add_product.html', {'form': form})
 
 # Edit existing product
+# @login_required
+# def edit_product(request, pk):
+#     product = get_object_or_404(Product, pk=pk, farmer=request.user)
+    
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES, instance=product)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Product updated successfully!')
+#             return redirect('farmer_dashboard')
+#     else:
+#         form = ProductForm(instance=product)
+    
+#     return render(request, 'farmer/edit_product.html', {'form': form, 'product': product})
+
 @login_required
 def edit_product(request, pk):
     product = get_object_or_404(Product, pk=pk, farmer=request.user)
@@ -113,6 +128,14 @@ def edit_product(request, pk):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
+            # If a new image is uploaded, delete the old one
+            if 'image' in request.FILES:
+                # Delete old image file if it exists
+                if product.image:
+                    import os
+                    if os.path.isfile(product.image.path):
+                        os.remove(product.image.path)
+            
             form.save()
             messages.success(request, 'Product updated successfully!')
             return redirect('farmer_dashboard')
