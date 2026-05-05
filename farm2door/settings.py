@@ -31,7 +31,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-# DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
@@ -145,12 +144,6 @@ USE_TZ = True
 # STATIC_URL = 'static/'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-# STATICFILES_DIRS = [BASE_DIR / 'static']  # if you have a static folder
-
-# Add this line - tells Django to also collect media files
-STATICFILES_DIRS = [
-    BASE_DIR / 'media',  # Include media folder
-]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -159,6 +152,9 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'farmer_dashboard'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # At the bottom of settings.py, update the STORAGES section:
 if os.environ.get("CLOUDINARY_CLOUD_NAME"):
@@ -185,6 +181,3 @@ else:
 # ADD THIS NEW SECTION - Serve media files in production
 WHITENOISE_USE_FINDERS = True
 WHITENOISE_AUTOREFRESH = True
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
