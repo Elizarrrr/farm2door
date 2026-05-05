@@ -32,6 +32,56 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 - **Database:** SQLite
 - **Image Handling:** Pillow
 
+## Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
+
+### Setup Steps
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/Farm2Door.git
+cd Farm2Door
+```
+
+2. **Create virtual environment**
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Mac/Linux
+source venv/bin/activate
+```
+
+3. **Install dependencies**
+```bash
+pip install django pillow
+```
+
+4. **Run migrations**
+```bash
+python manage.py migrate
+```
+
+5. **Create admin account**
+```bash
+python manage.py createsuperuser
+```
+
+6. **Start the server**
+```bash
+python manage.py runserver
+```
+
+7. **Open your browser**
+```
+http://127.0.0.1:8000/
+```
+
 ## Usage
 
 ### As a Farmer:
@@ -49,6 +99,25 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 4. Fill in your delivery details
 5. Submit your order
 
+### Admin Panel:
+
+Access at `/admin/` with your superuser credentials to manage all users, products, and orders.
+
+## Project Structure
+
+```
+Farm2Door/
+├── core/                 # Main app
+│   ├── models.py        # Database models
+│   ├── views.py         # View functions
+│   ├── forms.py         # Form definitions
+│   └── urls.py          # URL routes
+├── templates/           # HTML templates
+├── media/              # Uploaded images
+├── farm2door/          # Project settings
+└── manage.py           # Django management script
+```
+
 ## Acknowledgments
 
 - Supports local farmers and food security
@@ -56,4 +125,4 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 
 ---
 
-**Live Demo:** [https://farm2door-7ik3.onrender.com](https://farm2door-7ik3.onrender.com/)
+**Live Demo:** [https://farm2door-7ik3.onrender.com](https://farm2door-7ik3.onrender.com)
