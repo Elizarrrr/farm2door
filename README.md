@@ -9,6 +9,7 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 ## Features
 
 **For Farmers:**
+
 - Register and create an account
 - Add, edit, and delete products
 - Upload product images
@@ -17,6 +18,7 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 - Track order status
 
 **For Customers:**
+
 - Browse all available products
 - Search and filter by category
 - View detailed product information
@@ -33,12 +35,14 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 ## Usage
 
 ### As a Farmer:
+
 1. Register at `/signup/`
 2. Login with your credentials
 3. Add products from your dashboard
 4. Manage orders as they come in
 
 ### As a Customer:
+
 1. Visit the home page
 2. Browse or search for products
 3. Click "Order Now" on any product
@@ -52,4 +56,4 @@ Farm2Door eliminates middlemen by providing farmers with a digital platform to s
 
 ---
 
-**Live Demo:** [https://elizarrrr.pythonanywhere.com](https://elizarrrr.pythonanywhere.com)
+**Live Demo:** [Production URL:](https://farm2door-7ik3.onrender.com/)
