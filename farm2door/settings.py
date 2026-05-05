@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,17 +50,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'cloudinary',
-    'cloudinary_storage',
+    # 'cloudinary',
+    # 'cloudinary_storage',
 ]
 
 # Cloudinary configuration - only use in production (Render)
-if os.environ.get("CLOUDINARY_CLOUD_NAME"):
-    cloudinary.config(
-        cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
-        api_key=os.environ.get('CLOUDINARY_API_KEY'),
-        api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
-    )
+# if os.environ.get("CLOUDINARY_CLOUD_NAME"):
+#     cloudinary.config(
+#         cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+#         api_key=os.environ.get('CLOUDINARY_API_KEY'),
+#         api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
+#     )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -157,27 +157,27 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # At the bottom of settings.py, update the STORAGES section:
-if os.environ.get("CLOUDINARY_CLOUD_NAME"):
-    # Production: Use Cloudinary for NEW uploads, but serve existing files via WhiteNoise
-    STORAGES = {
-        "default": {
-            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-        },
-    }
-else:
-    # Development: Use local file storage
-    STORAGES = {
-        "default": {
-            "BACKEND": "django.core.files.storage.FileSystemStorage",
-        },
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
-    }
+# if os.environ.get("CLOUDINARY_CLOUD_NAME"):
+#     # Production: Use Cloudinary for NEW uploads, but serve existing files via WhiteNoise
+#     STORAGES = {
+#         "default": {
+#             "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+#         },
+#         "staticfiles": {
+#             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#         },
+#     }
+# else:
+#     # Development: Use local file storage
+#     STORAGES = {
+#         "default": {
+#             "BACKEND": "django.core.files.storage.FileSystemStorage",
+#         },
+#         "staticfiles": {
+#             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#         },
+#     }
 
-# ADD THIS NEW SECTION - Serve media files in production
+# # ADD THIS NEW SECTION - Serve media files in production
 # WHITENOISE_USE_FINDERS = True
 # WHITENOISE_AUTOREFRESH = True
